@@ -1,4 +1,4 @@
-package com.KoreaIT.java.BAM;
+package com.KoreaIT.java.BAM.utill;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
