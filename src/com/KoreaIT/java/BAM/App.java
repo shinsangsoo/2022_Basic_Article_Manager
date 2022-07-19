@@ -10,9 +10,11 @@ import com.KoreaIT.java.BAM.utill.Util;
 public class App {
 	
 	private List<Article> articles;
+	private List<Member> members;
 
 	public App() {
 		articles = new ArrayList<>();
+		members = new ArrayList<>();
 	}
 
 	public void run() {
@@ -49,7 +51,27 @@ public class App {
 
 				System.out.printf("%d번 글이 생성되었습니다\n", id);
 
-			} else if (cmd.startsWith("article list")) {
+			}
+			if (cmd.equals("member join")) {
+				int id = members.size() +1;
+				String regDate = Util.getNowDateStr();
+				System.out.printf("로그인 ID : ");
+				String logId = sc.nextLine();
+				System.out.printf("비밀번호 : ");
+				String logPass = sc.nextLine();
+				System.out.printf("비밀번호 확인 : ");
+				String logPassOk = sc.nextLine();
+				System.out.printf("이름 : ");
+				String name = sc.nextLine();
+				
+				Member member = new Member(id, regDate, logId, logPass, name);
+				members.add(member);
+				
+				System.out.printf("%d번 회원님 환영합니다\n",id);
+			
+			}
+				
+			else if (cmd.startsWith("article list")) {
 				if (articles.size() == 0) {
 					System.out.println("게시물이 없습니다");
 					continue;
@@ -204,5 +226,9 @@ public class App {
 		articles.add(new Article(2, Util.getNowDateStr(), "제목2", "내용2", 22));
 		articles.add(new Article(3, Util.getNowDateStr(), "제목3", "내용3", 33));
 	}
+	 
+		
+	}
+	
 
 }
