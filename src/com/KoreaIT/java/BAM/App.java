@@ -56,12 +56,37 @@ public class App {
 			if (cmd.equals("member join")) {
 				int id = members.size() +1;
 				String regDate = Util.getNowDateStr();
-				System.out.printf("로그인 ID : ");
-				String logId = sc.nextLine();
+				String logId = null;
+				
+				while(true) {
+					
+					System.out.printf("로그인 ID : ");
+					logId = sc.nextLine();
+				
+					if(isJoinableLoginId(logId) == false) {
+						System.out.printf("%s은(는) 이미 사용 중인 아이디입니다\n",logId);
+						continue;
+					}
+					break;
+				}
+				
+				String logPass = null;
+				String logPassOk = null;
+				
+				while(true) {
+					
+				
 				System.out.printf("비밀번호 : ");
-				String logPass = sc.nextLine();
+				logPass = sc.nextLine();
 				System.out.printf("비밀번호 확인 : ");
-				String logPassOk = sc.nextLine();
+				logPassOk = sc.nextLine();
+				
+					if(logPass.equals(logPassOk) == false) {
+						System.out.println("비밀번호를 다시 입력해주세요");
+						continue;
+					}
+					break;
+				}
 				System.out.printf("이름 : ");
 				String name = sc.nextLine();
 				
@@ -69,8 +94,11 @@ public class App {
 				members.add(member);
 				
 				System.out.printf("%d번 회원님 환영합니다\n",id);
-			
+				
 			}
+		
+			
+			
 				
 			else if (cmd.startsWith("article list")) {
 				if (articles.size() == 0) {
@@ -91,6 +119,8 @@ public class App {
 							forPrintArticles.add(article);
 						}
 					}
+					
+				
 					
 					if (forPrintArticles.size() == 0) {
 						System.out.println("해당 검색어를 포함하는 게시물을 찾을 수 없습니다");
@@ -176,6 +206,28 @@ public class App {
 
 		System.out.println("==프로그램 끝==");
 		sc.close();
+	}
+
+	private boolean isJoinableLoginId(String logId) {
+		 int index = getMemberIndexByLoginId(logId);
+		 
+		 if(index == -1) {
+			 return true;
+		 }
+		 
+		return false;
+	}
+
+	private int getMemberIndexByLoginId(String logId) {
+		int i = 0;
+		for(Member member : members) {
+			if(member.loginId.equals(logId)) {
+				return i;
+			}
+			i++;
+		}
+		
+		return -1;
 	}
 
 	private int getArticleIndexById(int id) {
