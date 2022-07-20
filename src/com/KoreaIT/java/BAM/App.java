@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import com.KoreaIT.java.BAM.dto.Article;
+import com.KoreaIT.java.BAM.dto.Member;
 import com.KoreaIT.java.BAM.utill.Util;
 
 public class App {
@@ -231,4 +232,4 @@ public class App {
 	}
 	
 
-}
+
