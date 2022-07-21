@@ -7,7 +7,7 @@ import java.util.Scanner;
 import com.KoreaIT.java.BAM.dto.Article;
 import com.KoreaIT.java.BAM.utill.Util;
 
-public class ArticleController {
+public class ArticleController extends Controller {
 	
 	private Scanner sc;
 	private List<Article> articles;
@@ -15,6 +15,10 @@ public class ArticleController {
 	public ArticleController(Scanner sc, List<Article> articles) {
 		this.sc = sc;
 		this.articles = articles;
+	}
+	
+	public void doAction(String cmd) {
+		
 	}
 	
 	public void doWrite() {

@@ -3,16 +3,21 @@ package com.KoreaIT.java.BAM.Controller;
 import java.util.List;
 import java.util.Scanner;
 
+import com.KoreaIT.java.BAM.dto.Article;
 import com.KoreaIT.java.BAM.dto.Member;
 import com.KoreaIT.java.BAM.utill.Util;
 
-public class MemberController {
+public class MemberController extends Controller {
 	private Scanner sc;
 	private List<Member> members;
 	
 	public MemberController(Scanner sc, List<Member> members) {
 		this.sc = sc;
 		this.members = members;
+	}
+	
+	public void doAction(String cmd) {
+		
 	}
 
 	public void dojoin() {
@@ -25,6 +30,8 @@ public class MemberController {
 			
 			System.out.printf("로그인 ID : ");
 			logId = sc.nextLine();
+			
+			
 		
 			if(isJoinableLoginId(logId) == false) {
 				System.out.printf("%s은(는) 이미 사용 중인 아이디입니다\n",logId);
