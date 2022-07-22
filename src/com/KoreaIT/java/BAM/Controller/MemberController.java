@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import com.KoreaIT.java.BAM.dto.Article;
 import com.KoreaIT.java.BAM.dto.Member;
 import com.KoreaIT.java.BAM.utill.Util;
 
@@ -13,7 +12,8 @@ public class MemberController extends Controller {
 	private List<Member> members;
 	private String cmd;
 	private String actionMethodName;	
-	public MemberController(Scanner sc) {
+	private Member loginedMember;
+	public MemberController(Scanner sc){
 		this.sc = sc;	
 		members = new ArrayList<>();
 	}
@@ -25,10 +25,14 @@ public class MemberController extends Controller {
 		switch(actionMethodName) {
 		case "join" :
 			dojoin();
+			break;				
+		case "login":
+			doLogin();
 			break;
-			default:
+		default:
 			System.out.println("존재하지 않는 명령어입니다");
-			break;
+			
+			
 		}
 	}
 	
@@ -77,10 +81,45 @@ public class MemberController extends Controller {
 		Member member = new Member(id, regDate, logId, logPass, name);
 		members.add(member);
 		
-		System.out.printf("%d번 회원님 환영합니다\n",id);
+		System.out.printf("%s 회원님 환영합니다\n",name);
+		
+	}
+	private void doLogin() {
+		System.out.printf("로그인 ID : ");
+		String loginId = sc.nextLine();
+		System.out.printf("비밀번호 : ");
+		String loginPw = sc.nextLine();
+		
+		Member member = getMemberByLoginId(loginId);
+		
+		if(member == null) {
+			System.out.println("해당 회원은 존재하지 않습니다");
+			return;
+		}
+		if(member.loginPw.equals(loginPw) == false) {
+			System.out.println("비밀번호를 확인해주세요");
+			return;
+		}
+		
+		loginedMember = member;
+		System.out.printf("로그인 성공!, %s님 환영합니다.\n", loginedMember.name);
+			
 		
 	}
 	
+	
+	
+	private Member getMemberByLoginId(String loginId) {
+		int index = getMemberIndexByLoginId(loginId);
+
+		if (index == -1) {
+			return null;
+		}
+
+		return members.get(index);
+		
+	}
+
 	private boolean isJoinableLoginId(String logId) {
 		 int index = getMemberIndexByLoginId(logId);
 		 
