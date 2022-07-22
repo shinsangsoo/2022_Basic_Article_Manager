@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import com.KoreaIT.java.BAM.dto.Article;
+import com.KoreaIT.java.BAM.dto.Member;
 import com.KoreaIT.java.BAM.utill.Util;
 
 public class ArticleController extends Controller {
@@ -45,7 +46,7 @@ public class ArticleController extends Controller {
 		}
 	}
 		
-	
+
 	private void doWrite() {
 		
 	int id = articles.size() + 1;
@@ -135,6 +136,7 @@ public class ArticleController extends Controller {
 	
 
 	private void doModify() {
+		
 		String[] cmdBits = cmd.split(" ");
 		
 		if (cmdBits.length == 2) {
