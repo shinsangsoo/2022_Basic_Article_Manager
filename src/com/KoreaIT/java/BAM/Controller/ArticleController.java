@@ -28,16 +28,28 @@ public class ArticleController extends Controller {
 		case "list":
 			showList();
 			break;
-		case "write":
+		case "write":		
+			if(isLogined()== false ) {
+				System.out.println("로그인 후 이용해주세요");
+				return;
+			}
 			doWrite();
 			break;
 		case "detail":
 			showDetail();
 			break;
 		case "modify":
+			if(isLogined()== false ) {
+				System.out.println("로그인 후 이용해주세요");
+				return;
+			}
 			doModify();
 			break;
 		case "delete":
+			if(isLogined()== false ) {
+				System.out.println("로그인 후 이용해주세요");
+				return;
+			}
 			doDelete();
 			break;
 			default:
@@ -48,6 +60,7 @@ public class ArticleController extends Controller {
 		
 
 	private void doWrite() {
+		
 		
 	int id = articles.size() + 1;
 	String regDate = Util.getNowDateStr();
@@ -91,9 +104,7 @@ public class ArticleController extends Controller {
 				return;
 			}
 		}
-		
-		
-									
+													
 		System.out.printf("번호     |   제목     |   	  %9s        |   조회\n", "날짜");
 		for (int i = forPrintArticles.size() - 1; i >= 0; i--) {
 			Article article = forPrintArticles.get(i);

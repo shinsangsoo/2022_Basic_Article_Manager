@@ -12,7 +12,6 @@ public class MemberController extends Controller {
 	private List<Member> members;
 	private String cmd;
 	private String actionMethodName;	
-	private Member loginedMember;
 	public MemberController(Scanner sc){
 		this.sc = sc;	
 		members = new ArrayList<>();
@@ -102,6 +101,7 @@ public class MemberController extends Controller {
 	private void doLogin() {
 		if(isLogined()) {
 			System.out.println("이미 로그인 상태입니다.");
+			return;
 		}
 		System.out.printf("로그인 ID : ");
 		String loginId = sc.nextLine();
@@ -127,6 +127,7 @@ public class MemberController extends Controller {
 	private void doLogout() {
 		if(isLogined() == false) {
 			System.out.println("로그인 상태가 아닙니다");
+			return;
 		}
 		
 		loginedMember = null;
@@ -134,10 +135,7 @@ public class MemberController extends Controller {
 	}
 	
 	
-	private boolean isLogined() {
-		return loginedMember != null; 
-			
-	}
+	
 
 	private Member getMemberByLoginId(String loginId) {
 		int index = getMemberIndexByLoginId(loginId);
