@@ -29,27 +29,15 @@ public class ArticleController extends Controller {
 			showList();
 			break;
 		case "write":		
-			if(isLogined() == false ) {
-				System.out.println("로그인 후 이용해주세요");
-				return;
-			}
 			doWrite();
 			break;
 		case "detail":
 			showDetail();
 			break;
 		case "modify":
-			if(isLogined() == false ) {
-				System.out.println("로그인 후 이용해주세요");
-				return;
-			}
 			doModify();
 			break;
 		case "delete":
-			if(isLogined() == false ) {
-				System.out.println("로그인 후 이용해주세요");
-				return;
-			}
 			doDelete();
 			break;
 			default:
