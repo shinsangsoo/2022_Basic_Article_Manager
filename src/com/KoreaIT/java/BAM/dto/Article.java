@@ -18,7 +18,6 @@ public class Article extends Dto {
 		this.title = title;
 		this.body = body;
 		this.hit = hit;
-		
 	}
 
 	public void increaseHit() {
