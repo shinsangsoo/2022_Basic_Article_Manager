@@ -2,7 +2,7 @@ package com.KoreaIT.java.BAM.service;
 
 import java.util.List;
 
-import com.KoreaIT.java.BAM.Container.Container;
+import com.KoreaIT.java.BAM.container.Container;
 import com.KoreaIT.java.BAM.dao.MemberDao;
 import com.KoreaIT.java.BAM.dto.Member;
 
@@ -34,6 +34,11 @@ public class MemberService {
 
 	public List<Member> getMembers() {
 		return memberDao.getMembers();
+	}
+
+	public String getMemberNameById(int id) {
+
+		return memberDao.getMemberNameById(id);
 	}
 
 }

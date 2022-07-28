@@ -1,4 +1,4 @@
-package com.KoreaIT.java.BAM.Controller;
+package com.KoreaIT.java.BAM.controller;
 
 import com.KoreaIT.java.BAM.dto.Member;
 

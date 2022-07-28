@@ -1,14 +1,14 @@
-package com.KoreaIT.java.BAM.Controller;
+package com.KoreaIT.java.BAM.controller;
 
 import java.util.List;
 import java.util.Scanner;
 
-import com.KoreaIT.java.BAM.Container.Container;
+import com.KoreaIT.java.BAM.container.Container;
 import com.KoreaIT.java.BAM.dto.Article;
 import com.KoreaIT.java.BAM.dto.Member;
 import com.KoreaIT.java.BAM.service.ArticleService;
 import com.KoreaIT.java.BAM.service.MemberService;
-import com.KoreaIT.java.BAM.utill.Util;
+import com.KoreaIT.java.BAM.util.Util;
 
 public class ArticleController extends Controller {
 	private Scanner sc;
@@ -81,16 +81,7 @@ public class ArticleController extends Controller {
 		for (int i = forPrintArticles.size() - 1; i >= 0; i--) {
 			Article article = forPrintArticles.get(i);
 
-			String writerName = null;
-
-			List<Member> members = memberService.getMembers();
-
-			for (Member member : members) {
-				if (article.memberId == member.id) {
-					writerName = member.name;
-					break;
-				}
-			}
+			String writerName = memberService.getMemberNameById(article.memberId);
 
 			System.out.printf("%7d | %6s   | %5s  |   %7s  | %5d\n", article.id, article.title, article.regDate,
 					writerName, article.hit);

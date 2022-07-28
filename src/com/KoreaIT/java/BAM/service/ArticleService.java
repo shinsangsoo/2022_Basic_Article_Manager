@@ -2,7 +2,7 @@ package com.KoreaIT.java.BAM.service;
 
 import java.util.List;
 
-import com.KoreaIT.java.BAM.Container.Container;
+import com.KoreaIT.java.BAM.container.Container;
 import com.KoreaIT.java.BAM.dao.ArticleDao;
 import com.KoreaIT.java.BAM.dto.Article;
 
@@ -36,5 +36,9 @@ public class ArticleService {
 
 	public void remove(Article foundArticle) {
 		articleDao.remove(foundArticle);
+	}
+
+	public List<Article> getForPrintArticles() {
+		return articleDao.getArticles(null);
 	}
 }
